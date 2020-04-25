@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row justify-content-center" style="background-color: cadetblue; height: 40px">
+    <div class="col-auto my-auto">
+      <a [routerLink]="['/api/companies']" style="color: white">Companies</a>
+    </div>
+    <div class="col-auto my-auto">
+      <a *ngIf="!logged" [routerLink]="['authorization']" style="color: white">Login</a>
+    </div>
+    <div class="col-auto my-auto">
+      <a *ngIf="logged" (click)="logout()" [routerLink]="" style="color: white">Logout</a>
+    </div>
+  </div>
+
+  <div class="row" style="min-height: 90vh; padding: 20px;">
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="row" style="background-color: cadetblue; height: 40px">
+  </div>
+
+</div>

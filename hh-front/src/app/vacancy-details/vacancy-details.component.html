@@ -1,0 +1,12 @@
+<div class="row">
+  <div *ngIf="logged" class="col-12">
+    <h3>{{vacancy.name}}'s details:</h3>
+    <p>Id: {{vacancy.id}}</p>
+    <p>Description: {{vacancy.description}}</p>
+    <p>Salary: {{vacancy.salary}}</p>
+  </div>
+
+  <div *ngIf="!logged" class="col-12">
+    <h3>Пожалуйста, войдите в систему!</h3>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+  <div *ngIf="logged" class="col-lg-3 col-md-5 col-sm-6 col-12">
+    <h3>{{company.name}}'s details:</h3>
+    <p>Id: {{company.id}}</p>
+    <p>Description: {{company.description}}</p>
+    <p>City: {{company.city}}</p>
+    <p>Address: {{company.address}}</p>
+  </div>
+
+  <div *ngIf="logged" class="col-lg-3 col-md-5 col-sm-6 col-12">
+    <h3>{{company.name}}'s vacancies:</h3>
+
+    <ul>
+      <li *ngFor="let vacancy of vacancies">
+        <div class="row justify-content-between">
+          <div class="col-6">
+            <a [routerLink]="['/api/vacancies/' + vacancy.id]"> {{vacancy.name}} </a>
+          </div>
+          <div *ngIf="logged" class="col-6">
+            <button (click)="deleteVacancy(vacancy.id)" class="btn btn-danger" style="padding: 1px 6px;">x</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+  <div *ngIf="logged" class="col-lg-3 col-md-5 col-sm-6 col-12">
+    <h2>Добавить вакансию</h2>
+    <div class="form-group">
+      <label>Название вакансии</label>
+      <input #name type="name" class="form-control" required placeholder="Введите название вакансии">
+    </div>
+    <div class="form-group">
+      <label>Описание вакансии</label>
+      <textarea #description name="description" required class="form-control textarea" rows="3" placeholder="Введите описание вакансии"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Зарплата</label>
+      <input #salary type="number" class="form-control" required placeholder="Введите выплачиваемую зарплату">
+    </div>
+    <div class="text-center">
+      <button (click)="addVacancy(name.value, description.value, salary.value);" class="submit-button btn-primary btn buttons">Добавить</button>
+    </div>
+  </div>
+
+
+  <div *ngIf="!logged" class="col-12">
+    <h3>Пожалуйста, войдите в систему!</h3>
+  </div>
+</div>

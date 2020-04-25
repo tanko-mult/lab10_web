@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div  class="col-lg-3 col-md-4 col-md-5 col-sm-6 col-12">
+    <h2>Компании</h2>
+
+      <ul>
+        <li *ngFor="let company of companies">
+          <div class="row justify-content-between">
+            <div class="col-6">
+              <a [routerLink]="['/api/companies/' + company.id]"> {{company.name}}</a>
+            </div>
+            <div *ngIf="logged" class="col-6">
+              <button (click)="deleteCompany(company.id)" class="btn btn-danger" style="padding: 1px 6px;">x</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+  </div>
+
+  <div *ngIf="logged" class="col-lg-3 col-md-4 col-md-5 col-sm-6 col-12">
+    <h2>Добавить компанию</h2>
+    <div class="form-group">
+      <label>Название компании</label>
+      <input #name type="name" class="form-control" required placeholder="Введите название компании">
+    </div>
+    <div class="form-group">
+      <label>Описание компании</label>
+      <textarea #description name="description" required class="form-control textarea" rows="3" placeholder="Введите описание компании"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Город</label>
+      <input #city type="name" class="form-control" required placeholder="Введите ваш город">
+    </div>
+    <div class="form-group">
+      <label>Адрес</label>
+      <input #address type="name" class="form-control" required placeholder="Введите ваш адрес">
+    </div>
+    <div class="text-center">
+      <button (click)="addCompany(name.value, description.value, city.value, address.value);" class="submit-button btn-primary btn buttons">Добавить</button>
+    </div>
+  </div>
+</div>

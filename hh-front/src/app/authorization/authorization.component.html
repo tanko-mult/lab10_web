@@ -1,0 +1,59 @@
+<form>
+  <div *ngIf="loginMode">
+    <div  class="row justify-content-center">
+        <div class="form-group col-12 col-lg-4">
+          <label for="exampleInputEmail1">Username</label>
+          <input #login type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+    </div>
+    <div  class="row justify-content-center">
+        <div class="form-group col-12 col-lg-4">
+          <label for="exampleInputPassword1">Password</label>
+          <input #password type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+    </div>
+    <div  class="row justify-content-center">
+      <div class="col-auto">
+        <button (click)="signIn(login.value, password.value)" type="submit" class="btn btn-primary">Sign In</button>
+      </div>
+      <div class="col-auto">
+        <button (click)="loginMode = !loginMode" type="submit" class="btn btn-primary">Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loginMode">
+    <div class="row justify-content-center">
+      <div class="form-group col-12 col-lg-4">
+        <label for="exampleInputEmail1">Username</label>
+        <input #login type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-12 col-lg-4">
+        <label for="exampleInputPassword1">Password</label>
+        <input #password type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-12 col-lg-4">
+        <label for="exampleInputPassword2">Insert your password again</label>
+        <input #password2 type="password" class="form-control" id="exampleInputPassword2">
+         <small id="emailHelp" class="form-text text-muted">
+           Your password can’t be too similar to your other personal information.<br>
+           Your password must contain at least 8 characters. <br>
+           Your password can’t be a commonly used password. <br>
+           Your password can’t be entirely numeric.
+         </small>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <button (click)="signUp(login.value, password.value, password2.value)" type="submit" class="btn btn-primary">Sign Up</button>
+      </div>
+      <div class="col-auto">
+        <button (click)="loginMode = !loginMode" type="submit" class="btn btn-primary">Sign In</button>
+      </div>
+    </div>
+  </div>
+</form>
